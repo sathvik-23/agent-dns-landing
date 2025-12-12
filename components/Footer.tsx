@@ -4,13 +4,13 @@ import Link from 'next/link'
 
 export default function Footer() {
   return (
-    <footer className="bg-dark text-gray-400 py-12">
+    <footer className="bg-dark text-text-muted py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           <div>
             <h3 className="text-white text-xl font-bold mb-4">AgentDNS</h3>
-            <p className="text-sm">
-              Email infrastructure for agents.
+            <p className="text-sm text-text-secondary">
+              Programmatic DNS & Domain API for developers.
             </p>
           </div>
           <div>
@@ -69,12 +69,12 @@ export default function Footer() {
             </ul>
           </div>
         </div>
-        <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+        <div className="border-t border-default pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-sm">
             © 2025 AgentDNS, Inc. All rights reserved.
           </p>
           <div className="flex items-center gap-2 mt-4 md:mt-0">
-            <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+            <div className="w-2 h-2 bg-success rounded-full animate-pulse" />
             <span className="text-sm">All Systems Online</span>
           </div>
         </div>

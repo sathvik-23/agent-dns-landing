@@ -59,7 +59,7 @@ export default function Pricing() {
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
             Simple, Transparent Pricing
           </h2>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+          <p className="text-xl text-text-secondary max-w-2xl mx-auto">
             Launch with scale. Pay only for what you use.
           </p>
         </motion.div>
@@ -72,11 +72,7 @@ export default function Pricing() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className={`bg-dark-light/50 rounded-xl p-8 border-2 transition-all duration-300 backdrop-blur-sm ${
-                plan.popular
-                  ? 'border-primary shadow-xl shadow-primary/20 scale-105'
-                  : 'border-gray-800/50 hover:shadow-lg hover:shadow-primary/10'
-              }`}
+              className="bg-card rounded-xl p-8 border-2 border-[rgba(255,255,255,0.1)] transition-all duration-300 backdrop-blur-sm hover:!border-primary hover:shadow-lg hover:shadow-primary/20"
             >
               {plan.popular && (
                 <div className="bg-primary text-white text-xs font-semibold px-3 py-1 rounded-full inline-block mb-4">
@@ -90,14 +86,14 @@ export default function Pricing() {
                 <span className="text-4xl font-bold text-white">
                   {plan.price}
                 </span>
-                <span className="text-gray-300 ml-2">{plan.unit}</span>
+                <span className="text-text-secondary ml-2">{plan.unit}</span>
               </div>
-              <p className="text-gray-300 mb-6">{plan.description}</p>
+              <p className="text-text-secondary mb-6">{plan.description}</p>
               <ul className="space-y-3 mb-8">
                 {plan.features.map((feature, featureIndex) => (
                   <li key={featureIndex} className="flex items-start">
                     <Check className="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-300">{feature}</span>
+                    <span className="text-text-secondary">{feature}</span>
                   </li>
                 ))}
               </ul>
@@ -106,7 +102,7 @@ export default function Pricing() {
                 className={`block w-full text-center px-6 py-3 rounded-lg font-semibold transition-all ${
                   plan.popular
                     ? 'bg-primary text-white hover:bg-primary-hover'
-                    : 'bg-gray-800 text-white hover:bg-gray-700'
+                    : 'bg-dark-light text-white hover:bg-dark-lighter'
                 }`}
               >
                 Get Started
