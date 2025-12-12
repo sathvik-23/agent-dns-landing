@@ -133,7 +133,7 @@ export default function Playground() {
           <div className="mt-6 p-4 bg-primary-bg border border-primary rounded-lg">
             <p className="text-sm text-text-secondary">
               <strong className="text-white">Note:</strong> This is a demo interface. 
-              In production, you'll use the AgentDNS API with your API key to perform real domain searches and DNS operations.
+              In production, you&apos;ll use the AgentDNS API with your API key to perform real domain searches and DNS operations.
             </p>
           </div>
         </motion.div>
