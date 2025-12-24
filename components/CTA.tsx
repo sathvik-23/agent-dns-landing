@@ -1,10 +1,17 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { useState } from 'react'
+import GetStartedModal from './GetStartedModal'
 
 export default function CTA() {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
   return (
-    <section id="get-started" className="py-24 bg-gradient-to-br from-dark-light via-dark to-dark-light relative overflow-hidden">
+    <section
+      id="get-started"
+      className="py-24 bg-gradient-to-br from-dark-light via-dark to-dark-light relative overflow-hidden"
+    >
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-1/2 left-1/4 w-48 h-48 sm:w-64 sm:h-64 md:w-96 md:h-96 bg-primary/5 rounded-full blur-3xl" />
@@ -23,15 +30,16 @@ export default function CTA() {
             Build DNS Automation into Your App Today
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-text-secondary mb-6 sm:mb-8 md:mb-10 max-w-2xl mx-auto px-2 sm:px-0">
-            Start integrating AgentDNS into your application. Get your API key and start building in minutes.
+            Start integrating AgentDNS into your application. Get your API key
+            and start building in minutes.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-2 sm:px-0">
-            <a
-              href="#docs"
+            <button
+              onClick={() => setIsModalOpen(true)}
               className="px-6 sm:px-8 py-3 sm:py-4 bg-primary text-white rounded-lg font-semibold text-base sm:text-lg hover:bg-primary-hover transition-all transform hover:scale-105 shadow-lg shadow-primary/30 touch-manipulation"
             >
               Get Started
-            </a>
+            </button>
             <a
               href="#docs"
               className="px-6 sm:px-8 py-3 sm:py-4 bg-card text-white rounded-lg font-semibold text-base sm:text-lg hover:bg-card-hover transition-all backdrop-blur-sm border border-default hover:border-hover touch-manipulation"
@@ -41,9 +49,10 @@ export default function CTA() {
           </div>
         </motion.div>
       </div>
+      <GetStartedModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </section>
   )
 }
-
-
-

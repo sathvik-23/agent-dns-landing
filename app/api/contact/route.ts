@@ -8,7 +8,10 @@ export async function POST(request: NextRequest) {
     if (!apiKey) {
       console.error('RESEND_API_KEY is not configured')
       return NextResponse.json(
-        { error: 'Email service is not configured. Please contact the administrator.' },
+        {
+          error:
+            'Email service is not configured. Please contact the administrator.',
+        },
         { status: 500 }
       )
     }
@@ -36,13 +39,11 @@ export async function POST(request: NextRequest) {
 
     console.log('Attempting to send email via Resend...')
     console.log('To:', 'sathvik@agentdns.cc')
-    console.log('From:', 'onboarding@resend.dev')
+    console.log('From:', 'contact@agentdns.cc')
 
     // Send email using Resend
-    // NOTE: onboarding@resend.dev is a test domain and emails may not be delivered
-    // To fix: Verify your domain (agentdns.cc) in Resend dashboard and use: 'AgentDNS <noreply@agentdns.cc>'
     const { data, error } = await resend.emails.send({
-      from: 'AgentDNS Contact Form <onboarding@resend.dev>',
+      from: 'AgentDNS Contact Form <contact@agentdns.cc>',
       to: ['sathvik@agentdns.cc'],
       replyTo: email,
       subject: `Contact Form: ${subject}`,
@@ -55,7 +56,10 @@ export async function POST(request: NextRequest) {
             <p style="margin: 10px 0;"><strong style="color: #9ca3af;">Subject:</strong> <span style="color: #ffffff;">${subject}</span></p>
             <div style="margin-top: 20px;">
               <p style="color: #9ca3af; margin-bottom: 10px;"><strong>Message:</strong></p>
-              <p style="color: #ffffff; white-space: pre-wrap; line-height: 1.6;">${message.replace(/\n/g, '<br>')}</p>
+              <p style="color: #ffffff; white-space: pre-wrap; line-height: 1.6;">${message.replace(
+                /\n/g,
+                '<br>'
+              )}</p>
             </div>
           </div>
         </div>
@@ -93,11 +97,3 @@ ${message}
     )
   }
 }
-
-
-
-
-
-
-
-

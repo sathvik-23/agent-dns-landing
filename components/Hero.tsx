@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { useState } from 'react'
+import GetStartedModal from './GetStartedModal'
 
 const codeSnippets = {
   node: `// Search a domain
@@ -27,16 +28,20 @@ curl https://api.agentdns.cc/domains/search \\
 
 export default function Hero() {
   const [activeTab, setActiveTab] = useState<'node' | 'python' | 'curl'>('node')
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-dark via-dark-light to-dark pt-20 sm:pt-24 md:pt-28">
       {/* Background gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-dark via-dark-light to-dark opacity-90" />
-      
+
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-1/4 left-1/4 w-48 h-48 sm:w-64 sm:h-64 md:w-96 md:h-96 bg-primary/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-48 h-48 sm:w-64 sm:h-64 md:w-96 md:h-96 bg-primary/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+        <div
+          className="absolute bottom-1/4 right-1/4 w-48 h-48 sm:w-64 sm:h-64 md:w-96 md:h-96 bg-primary/10 rounded-full blur-3xl animate-pulse"
+          style={{ animationDelay: '1s' }}
+        />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 md:py-16 lg:py-20 w-full">
@@ -51,14 +56,15 @@ export default function Hero() {
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight">
               Programmatic DNS & Domain API for Developers
             </h1>
-            
+
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-sm sm:text-base md:text-lg lg:text-xl text-text-secondary mb-6 sm:mb-8 leading-relaxed"
             >
-              Instant domain search, automated DNS provisioning, full API control — developer-first.
+              Instant domain search, automated DNS provisioning, full API
+              control — developer-first.
             </motion.p>
 
             <motion.div
@@ -67,12 +73,12 @@ export default function Hero() {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-6 sm:mb-8"
             >
-              <a
-                href="#get-started"
+              <button
+                onClick={() => setIsModalOpen(true)}
                 className="px-6 sm:px-8 py-3 sm:py-4 bg-primary text-white rounded-lg font-semibold text-base sm:text-lg hover:bg-primary-hover transition-all transform hover:scale-105 shadow-lg shadow-primary/30 text-center touch-manipulation"
               >
                 Get Started
-              </a>
+              </button>
               <a
                 href="#docs"
                 className="px-6 sm:px-8 py-3 sm:py-4 bg-card text-white rounded-lg font-semibold text-base sm:text-lg hover:bg-card-hover transition-all backdrop-blur-sm border border-default hover:border-hover text-center touch-manipulation"
@@ -145,9 +151,10 @@ export default function Hero() {
           </motion.div>
         </div>
       </div>
+      <GetStartedModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </section>
   )
 }
-
-
-
