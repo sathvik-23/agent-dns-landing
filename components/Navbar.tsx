@@ -44,9 +44,7 @@ export default function Navbar() {
     <>
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled
-            ? 'bg-dark/95 backdrop-blur-md shadow-sm'
-            : 'bg-transparent'
+          scrolled ? 'bg-dark/95 backdrop-blur-md shadow-sm' : 'bg-transparent'
         }`}
         role="navigation"
         aria-label="Main navigation"
@@ -54,7 +52,11 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-14 sm:h-16 md:h-20">
             <div className="flex items-center z-50">
-              <Link href="/" className="flex items-center" aria-label="AgentDNS Home">
+              <Link
+                href="/"
+                className="flex items-center"
+                aria-label="AgentDNS Home"
+              >
                 <Image
                   src="/logo.png"
                   alt="AgentDNS Logo"
@@ -65,18 +67,38 @@ export default function Navbar() {
                 />
               </Link>
             </div>
-            
+
             {/* Desktop menu */}
             <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="text-sm font-medium transition-colors text-white/90 hover:text-white"
-                >
-                  {link.label}
-                </Link>
-              ))}
+              {navLinks.map((link) => {
+                const isDocs = link.href === '#docs'
+                if (isDocs) {
+                  return (
+                    <div key={link.href} className="relative group">
+                      <span
+                        className="text-sm font-medium transition-colors text-white/50 cursor-not-allowed"
+                        onClick={(e) => e.preventDefault()}
+                      >
+                        {link.label}
+                      </span>
+                      <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 bg-dark-light border border-default rounded text-xs text-white whitespace-nowrap opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-200 z-50">
+                        Coming soon
+                        <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-default"></div>
+                        <div className="absolute top-full left-1/2 transform -translate-x-1/2 -mt-px w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-dark-light"></div>
+                      </div>
+                    </div>
+                  )
+                }
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="text-sm font-medium transition-colors text-white/90 hover:text-white"
+                  >
+                    {link.label}
+                  </Link>
+                )
+              })}
               <Link
                 href="#get-started"
                 className="px-4 py-2 rounded-lg text-sm font-medium transition-all bg-primary text-white hover:bg-primary-hover"
@@ -119,16 +141,39 @@ export default function Navbar() {
         >
           <div className="flex flex-col h-full pt-20 px-6">
             <nav className="flex-1 space-y-2">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={handleLinkClick}
-                  className="block px-4 py-3 text-base font-medium text-white/90 hover:text-white hover:bg-card-hover rounded-lg transition-colors touch-manipulation"
-                >
-                  {link.label}
-                </Link>
-              ))}
+              {navLinks.map((link) => {
+                const isDocs = link.href === '#docs'
+                if (isDocs) {
+                  return (
+                    <div key={link.href} className="relative group">
+                      <span
+                        className="block px-4 py-3 text-base font-medium text-white/50 cursor-not-allowed rounded-lg"
+                        onClick={(e) => {
+                          e.preventDefault()
+                          handleLinkClick()
+                        }}
+                      >
+                        {link.label}
+                      </span>
+                      <div className="absolute left-full ml-2 top-1/2 transform -translate-y-1/2 px-2 py-1 bg-dark-light border border-default rounded text-xs text-white whitespace-nowrap opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-200 z-50">
+                        Coming soon
+                        <div className="absolute right-full top-1/2 transform -translate-y-1/2 w-0 h-0 border-t-4 border-b-4 border-r-4 border-transparent border-r-default"></div>
+                        <div className="absolute right-full top-1/2 transform -translate-y-1/2 -mr-px w-0 h-0 border-t-4 border-b-4 border-r-4 border-transparent border-r-dark-light"></div>
+                      </div>
+                    </div>
+                  )
+                }
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    onClick={handleLinkClick}
+                    className="block px-4 py-3 text-base font-medium text-white/90 hover:text-white hover:bg-card-hover rounded-lg transition-colors touch-manipulation"
+                  >
+                    {link.label}
+                  </Link>
+                )
+              })}
             </nav>
             <div className="pb-6">
               <Link
@@ -145,4 +190,3 @@ export default function Navbar() {
     </>
   )
 }
-

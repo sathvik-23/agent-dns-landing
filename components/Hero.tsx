@@ -79,12 +79,20 @@ export default function Hero() {
               >
                 Get Started
               </button>
-              <a
-                href="#docs"
-                className="px-6 sm:px-8 py-3 sm:py-4 bg-card text-white rounded-lg font-semibold text-base sm:text-lg hover:bg-card-hover transition-all backdrop-blur-sm border border-default hover:border-hover text-center touch-manipulation"
-              >
-                View Docs
-              </a>
+              <div className="relative group">
+                <button
+                  onClick={(e) => e.preventDefault()}
+                  className="px-6 sm:px-8 py-3 sm:py-4 bg-card text-white/50 rounded-lg font-semibold text-base sm:text-lg backdrop-blur-sm border border-default cursor-not-allowed text-center touch-manipulation opacity-60"
+                  disabled
+                >
+                  View Docs
+                </button>
+                <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 bg-dark-light border border-default rounded text-xs text-white whitespace-nowrap opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-200 z-50">
+                  Coming soon
+                  <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-default"></div>
+                  <div className="absolute top-full left-1/2 transform -translate-x-1/2 -mt-px w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-dark-light"></div>
+                </div>
+              </div>
             </motion.div>
 
             {/* Social proof */}
