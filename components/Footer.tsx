@@ -9,7 +9,7 @@ export default function Footer() {
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 mb-6 sm:mb-8">
           <div className="col-span-2 sm:col-span-2 md:col-span-1">
             <h3 className="text-white text-lg sm:text-xl font-bold mb-3 sm:mb-4">AgentDNS</h3>
-            <p className="text-xs sm:text-sm">Email infrastructure for agents.</p>
+            <p className="text-xs sm:text-sm">Programmatic DNS & Domain API for developers.</p>
           </div>
           <div>
             <h4 className="text-white font-semibold mb-3 sm:mb-4 text-sm sm:text-base">Product</h4>
